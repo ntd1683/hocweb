@@ -31,6 +31,28 @@
             position: fixed;
             right: 10px;
         }
+        #menu{
+            position: fixed;
+            left: -14px;
+            z-index: 99;
+            top: 10px;
+            box-sizing: border-box;
+            opacity: 50%;
+        }
+        #menu ul{
+            position: absolute;
+            visibility: hidden;
+            background: #242526;
+            top: 38px;
+            width: 150px;
+            left: 38px;
+            padding: 2px;
+            border: solid 2px white;
+
+        }
+        #menu li:hover ul{
+            visibility: visible;
+        }
         a{
             text-decoration: none;
             color: white;
@@ -119,6 +141,18 @@
                 <a href="https://facebook.com/ntd1683">
                     Follow Me
                 </a>
+            </div>
+            <div id="menu">
+                <li>
+                    <img class="icon_menu" src="./picture/icon_nav.png" alt="">
+                    <ul type="none">
+                        <li>
+                            <a href="https://ntd1683.github.io/hocweb/baitaptongket.html" target="_blank">Trang Chủ</a><br>
+                            <a href="https://www.facebook.com/profile.php?id=100022328181200" target="_blank">Model : Hải Yến</a><br>
+                            <a href="#">Model : Quang Thành</a>
+                        </li>
+                    </ul>
+                </li>
             </div>
             <div id="trai">
                 <div class="tren">
