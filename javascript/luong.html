@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tính Lương</title>
+</head>
+<body>
+    <script type="text/javascript">
+        let luong=11;
+        let thue;
+        let laiRong;
+        if(luong >= 15){
+            thue=(luong*30)/100;
+            laiRong=luong-thue;
+            document.write(`lương của bạn là :  ${luong}`);
+            document.write(`thuế của bạn là : ${thue}`);
+            document.write(`lãi ròng của bạn là : ${laiRong}`);
+        }
+        else if(luong >= 7 && luong <15){
+            thue=(luong*30)/100;
+            laiRong=luong-thue;
+            document.writeln(`lương của bạn là :  ${luong}`);
+            document.writeln(`thuế của bạn là : ${thue}`);
+            document.writeln(`lãi ròng của bạn là : ${laiRong}`);
+        }
+    </script>
+</body>
+</html>

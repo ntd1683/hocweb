@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+    <title>Ngày Trong Tháng</title>
+</head>
+<body>
+    <script type="text/javascript">
+    let n=2003;
+    let t=8;
+    let d;
+        switch(t){
+            case 1:case 3:case 4:case 5:case 7:case 8:case 10:case 12:
+                d=31;
+                break;
+            case 4:case 6:case 9:case 11:
+                d=30;
+                break;
+            case 2:
+                if((n%4==0&&n%100!=0)||(n%400==0)){
+                    d=29;
+                }
+                else{
+                    d=28;
+                }
+            break;
+        }
+    document.write(`Tháng ${t} có ${d} ngày`);
+    </script>
+</body>
+</html>

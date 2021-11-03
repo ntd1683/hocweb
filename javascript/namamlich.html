@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Năm Âm Lịch</title>
+        <meta charset="UTF-8">
+        
+    </head>
+    <body>
+        <script type="text/javascript">
+            let n=2003;
+            let can;
+            let chi;
+            can=(n-3)%10;
+            switch (can){
+                case 0:
+                    can="Quy";
+                    break;
+                case 1:
+                    can="Giap";
+                    break;
+                case 2:
+                    can="At";
+                    break;
+                case 3:
+                    can="Binh";
+                    break;
+                case 4:
+                    can="Dinh";
+                    break;
+                case 5:
+                    can="Mau";
+                    break;
+                case 6:
+                    can="Ky";
+                    break;
+                case 7:
+                    can="Canh";
+                    break;
+                case 8:
+                    can="Tan";
+                    break;
+                case 9:
+                    can="Nham";
+                    break;
+            }
+            chi=(n-3)%12;
+            switch (chi){
+                case 0:
+                    chi=" Hoi";
+                    break;
+                case 1:
+                    chi=" Ty";
+                    break;
+                case 2:
+                    chi=" Suu";
+                    break;
+                case 3:
+                    chi=" Dan";
+                    break;
+                case 4:
+                    chi=" Mao";
+                    break;
+                case 5:
+                    chi=" Thin";
+                    break;
+                case 6:
+                    chi=" Ty";
+                    break;
+                case 7:
+                    chi=" Ngo";
+                    break;
+                case 8:
+                    chi=" Mui";
+                    break;
+                case 9:
+                    chi=" Than";	
+                    break;
+                case 10:
+                    chi=" Dau";
+                    break;
+                case 11:
+                    chi=" Tuat";
+                    break;
+            }
+        document.write(`Năm ${n} - ${can}${chi}`);
+        </script>
+    </body>
+</html>
