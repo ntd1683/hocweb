@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript - Bài 2</title>
+    <style type="text/css">
+        body{
+            background-image: url(./background/background\ 1.png);
+            color: black;
+            background-repeat: no-repeat;
+            font-family: 'Courier New', Courier, monospace;
+            background-size: cover;
+            backdrop-filter: blur(5px);
+        }
+        #div_tong{
+            width: 100%;
+            height: 626px;
+            position: relative;
+        }
+        #form{
+            left: 25%;
+            top: 30%;
+            width: 50%;
+            height: 30%;
+            position: absolute;
+            z-index: 99;
+        }
+        #title{
+            background-color: #59fffd;
+            width: 100%;
+            height: 20%;
+            border-radius: 55px 55px 0px 0px;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        #info{
+            position: absolute;
+            background-color: #59fffd;
+            width: 100%;
+            height: 80%;
+            border-radius: 0px 0px 55px 55px;
+        }
+        #nhap{
+            display: flex;
+            position: absolute;
+            left: 133px;
+            top: 11px;
+            flex-direction: row;
+            font-size: 30px;
+        }
+        #click{
+            position: absolute;
+            top: 103px;
+            left: 240px;
+            width: 20%;
+            height: 20%;
+            border: 1px solid white;
+            border-radius: 5px;
+            background-color: white;
+            font-size: 20px;
+        }
+        #notifi{
+            position: absolute;
+            width: 40%;
+            height: 30%;
+            top: 390px;
+            left: 371px;
+        }
+        #notifi >.img{
+            width: 100%;
+            height: 100%;
+        }
+        #click:hover {
+            background-color: rgb(0, 132, 255);
+            width: 25%;
+            height: 25%;
+            font-size: 25px;
+            color: white;
+        }
+        .ket_qua{
+            position: absolute;
+            width: 276px;
+            height: 100px;
+            bottom: 74px;
+            left: 125px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div_tong">
+        <div id="form">
+            <div id="title">
+                <p align="center">Thông Tin Về Con Số</p>
+            </div>
+            <div id="info">
+                <div id="nhap">
+                    <p>Nhập Số : </p>
+                    <input type="number" id="number" style="margin-left: 167px;margin-top: 30px; position: absolute;height: 30px;" >
+                </div>
+                <button type="button" onclick="numbers()" id="click">Tìm</button>
+            </div>
+        </div>
+        <div id="notifi">
+            <img src="./background/notifi.png" class="img">
+            <div class="ket_qua">
+                <p id="chan_le"> số 1 </p>
+                <p id="snt"> số 2</p>
+                <p id="chay">số 3</p>
+                <p id="dem">số 4</p>
+            </div>
+        </div>
+    </div>
+    <PRE>
+        <script type="text/javascript">
+            let input = document.getElementById("number");
+            input.addEventListener("keyup", function(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                document.getElementById("click").click();
+            }
+            });
+            function numbers(){
+                let n=parseInt(document.getElementById('number').value);
+                let d=0;
+                let k=0;
+                if(n%2==0){
+                    document.getElementById('chan_le').innerHTML='Đây là số chẵn';
+                    d++;
+                }
+                else if(n%2==1||n%2==-1){
+                    document.getElementById('chan_le').innerHTML='Đây là số lẻ';
+                    d++;
+                }
+                for(let i=1;i<=n;i++){
+                    if(n%i==0){
+                        k++;
+                    }
+                }
+                if(k==2){
+                    document.getElementById('snt').innerHTML='\nĐây là số nguyên tố';
+                }
+                else{
+                    document.getElementById('snt').innerHTML='\nĐây không là số nguyên tố';
+                }
+                if(n>=0){
+                    for(let j=1;j<=n;j++){
+                        document.getElementById('chay').innerHTML=' '+j;
+                    }
+                }
+                else{
+                    for(let m=n;m<=1;m++){
+                        document.getElementById('chay').innerHTML=' '+k;
+                    }
+                }
+            }
+            document.getElementById('dem').innerHTML=d;
+        </script>
+    </PRE>
+</body>
+</html>
