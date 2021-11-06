@@ -2,26 +2,103 @@
 <head>
     <meta charset="UTF-8">
     <title>Tính Lương</title>
+    <style type="text/css">
+    body{
+        background-image: url(./background/background\ 1.png);
+        background-repeat: no-repeat;
+        align-items: center;
+    }
+    #form{
+        text-align: center;
+    }
+    #div_tong{
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    table{
+        width: 100%;
+        height: 700px;
+    }
+    #div_luong{
+        position: absolute;
+        top: 321px;
+        left: 530px;
+    }
+    #head{
+        position: absolute;
+        top: -32px;
+        left: 89px;
+        font-size: 20px;
+        font-weight: bold;
+        font-style: italic;
+        opacity: 80%;
+    }
+    #luong_vao{
+        position: absolute;
+        right: 48px;
+        top: 76px;
+        border-radius: 5px;
+        border: 1px solid white;
+    }
+    #button{
+        position: absolute;
+        top: 112px;
+        left: 62px;
+        font-size: 20px;
+        border-radius: 7px;
+        border: 5px solid #59fffd;
+        padding-left: 40px;
+        padding-right: 40px;
+        background-color: #59fffd;
+    }
+    #ket_qua{
+        position: absolute;
+        top: 469px;
+        left: 462px;
+        z-index: 99;
+        font-size: 20px;
+        color: black;
+        opacity: 80%;
+    }
+    </style>
 </head>
 <body>
-    <script type="text/javascript">
-        let luong=11;
+    <div id="div_tong">
+        <form id="form">
+            <table>
+                <tr>
+                    <td>
+                        <div id="div_luong">
+                            <div id="head">Tính Thuế</div>
+                            <p style="font-size: 30px;color: black;">Nhập Lương Của Bạn</p>
+                            <input type="number" id="luong_vao">
+                            <input type="button" value="Tính" onclick="tinh_luong()" id="button">
+                        </div>
+                        <div id="ket_qua">
+                            Kết Quả : 
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+<script type="text/javascript">
+    function tinh_luong(){
+        let luong=parseInt(document.getElementById('luong_vao').value);
         let thue;
         let laiRong;
         if(luong >= 15){
             thue=(luong*30)/100;
             laiRong=luong-thue;
-            document.write(`lương của bạn là :  ${luong}`);
-            document.write(`thuế của bạn là : ${thue}`);
-            document.write(`lãi ròng của bạn là : ${laiRong}`);
+            document.getElementById('ket_qua').innerHTML=` Thuế của bạn là ${thue} | Lương của bạn là ${laiRong}` ;
         }
         else if(luong >= 7 && luong <15){
             thue=(luong*30)/100;
             laiRong=luong-thue;
-            document.writeln(`lương của bạn là :  ${luong}`);
-            document.writeln(`thuế của bạn là : ${thue}`);
-            document.writeln(`lãi ròng của bạn là : ${laiRong}`);
+            document.getElementById('ket_qua').innerHTML=` Thuế của bạn là ${thue} | Lương của bạn là ${laiRong}` ;
         }
+    }
     </script>
 </body>
 </html>
