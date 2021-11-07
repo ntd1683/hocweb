@@ -98,6 +98,9 @@
         #music:hover .nct{
             visibility: visible;
         }
+        #chay{
+            font-size: 15px;
+        }
     </style>
 </head>
 <body>
@@ -158,14 +161,17 @@
                 else{
                     document.getElementById('snt').innerHTML='\nĐây không là số nguyên tố';
                 }
+                let in_ra=document.getElementById('chay');
+                in_ra.innerHTML='';
+                in_ra.innerHTML+=`In`;
                 if(n>=0){
                     for(let j=1;j<=n;j++){
-                        document.getElementById('chay').innerHTML=document.getElementById('chay').innerHTML+' '+j;
+                       in_ra.innerHTML=in_ra.innerHTML+' '+j;
                     }
                 }
                 else{
                     for(let m=n;m<=1;m++){
-                        document.getElementById('chay').innerHTML=document.getElementById('chay').innerHTML+' '+m;
+                        in_ra.innerHTML=in_ra.innerHTML+' '+m;
                     }
                 }
                 document.getElementById('dem').innerHTML='Số lượng số đã nhập : ' + d++;
