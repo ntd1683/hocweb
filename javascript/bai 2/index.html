@@ -2,15 +2,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Javascript - Bài 2</title>
-    <style type="text/css">
-        body{
-            background-image: url(./background/background\ 1.png);
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+    <style>
+         body{
+            background-image: url(https://lh3.googleusercontent.com/pw/AM-JKLX1Mvm5tMwmF7yfEbgpFYKJPNzxzYerXt8PO1x7OEPa-9bt_ekFlkyX4LiCB-QI8IenPuNDrhrsF6Lx4Fozh_JeLpdlJ_AaDIGpnbM1t-j44bJ2PqMvvmqGLHD4QPlDg1e-BM58zMLuLMGB5vdkK1Sf7Q=w1101-h665-no);
             color: black;
             background-repeat: no-repeat;
             font-family: 'Courier New', Courier, monospace;
             background-size: cover;
             backdrop-filter: blur(5px);
-        }
+         }
         #div_tong{
             width: 100%;
             height: 626px;
@@ -84,6 +85,19 @@
             left: 125px;
             font-size: 18px;
         }
+        #music{
+            position: relative;
+            top: 2px;
+            left: 10px;
+            z-index: 99;
+        }
+        #music >.nct{
+            visibility: hidden;
+            position: absolute;
+        }
+        #music:hover .nct{
+            visibility: visible;
+        }
     </style>
 </head>
 <body>
@@ -101,13 +115,17 @@
             </div>
         </div>
         <div id="notifi">
-            <img src="./background/notifi.png" class="img">
+            <img src="https://lh3.googleusercontent.com/E-rtVh8P578hSi_E7J1Lt_Ja7iSVqyVPKo0_oaBc-9SzMCnpMP8XyN1dHDyCYZXuaafgOReUD0PiItr5N691vroruGSZLt9B30L9KVuEOAn9Of6cWIUMVS29CN7eBRW8_YJaQUiGQUFqb-FzOhReePIIm6eBAqDKKQB_sO3ZS70KLbZqkCzrTNY-VV83rXl_03ABFdXPtffVEjosSmQq9Py_5sc45sKKugHlMeR_KIl3KvRRmlVbz9hF4vG3mZRd2NDHXPxeUFVDr-RggWjocs_7gp9aiFYr1wLQf2QZUaZGtMB4FYuwkbfpn2N0tmm5EBBU1wzD5P-el5yxzxM-4KvyW0CK4UDhUB3VwaeLKwdxJ7_b29HtkAJjYy3TJS-i2LFE4cXrIFOY6qm5XerjRC54aDRBMUch3ne8_ds9vKOLmdCMLaZR39Ew8V2oybAmusgXLqycMUURV9-MTYo__TVfUJpceTWQaEAtrGGbIta-3hvVBopkq4rmBj5yVbTi-zCv_vmtjaHZCiendifPyhlfYyQYLXia7-jTR-TZVgAWpQHSFaLUaoRcYbfzqeV3DjBed9U4TKHbvmhUs7NV-5F98IH54cvAULq-MQJNIzJtblcZMfLNn5x9_aYuu_4h4Nq_fzg4d-vwNYW5tq-Y21kGePQaZ0i7jGC8acGHzboNA3I-pSYxZhTNqHmT3cqogmFam8pxcUgPyonBMx9i8Hterw=w575-h665-no?authuser=0" class="img">
             <div class="ket_qua">
-                <p id="chan_le"> số 1 </p>
-                <p id="snt"> số 2</p>
-                <p id="chay">số 3</p>
-                <p id="dem">số 4</p>
+                <p id="chan_le"></p>
+                <p id="snt"></p>
+                <p id="chay"></p>
+                <p id="dem"></p>
             </div>
+        </div>
+         <div id="music">
+            <img src="./background/icon_nav.png" alt="nghe nhạc">
+            <iframe src="https://www.nhaccuatui.com/mh/auto/HUrRmiQuz1P7" width="620" height="200" frameborder="0" allowfullscreen allow="autoplay" class="nct"></iframe>
         </div>
     </div>
     <PRE>
@@ -119,17 +137,15 @@
                 document.getElementById("click").click();
             }
             });
+            let d=1;
             function numbers(){
                 let n=parseInt(document.getElementById('number').value);
-                let d=0;
                 let k=0;
                 if(n%2==0){
                     document.getElementById('chan_le').innerHTML='Đây là số chẵn';
-                    d++;
                 }
                 else if(n%2==1||n%2==-1){
                     document.getElementById('chan_le').innerHTML='Đây là số lẻ';
-                    d++;
                 }
                 for(let i=1;i<=n;i++){
                     if(n%i==0){
@@ -144,16 +160,16 @@
                 }
                 if(n>=0){
                     for(let j=1;j<=n;j++){
-                        document.getElementById('chay').innerHTML=' '+j;
+                        document.getElementById('chay').innerHTML=document.getElementById('chay').innerHTML+' '+j;
                     }
                 }
                 else{
                     for(let m=n;m<=1;m++){
-                        document.getElementById('chay').innerHTML=' '+k;
+                        document.getElementById('chay').innerHTML=document.getElementById('chay').innerHTML+' '+m;
                     }
                 }
+                document.getElementById('dem').innerHTML='Số lượng số đã nhập : ' + d++;
             }
-            document.getElementById('dem').innerHTML=d;
         </script>
     </PRE>
 </body>
