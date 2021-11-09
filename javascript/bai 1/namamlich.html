@@ -67,7 +67,7 @@
                 height: 100px;
                 background-color: #9ce8ee;
                 top: 155px;
-                left: 254px;
+                left: 311px;
                 border: 1px;
                 border-radius: 58px;
             }
@@ -82,6 +82,19 @@
                 top:5px;
                 left: 200px;
                 font-size: 30px; 
+            }
+            #music{
+            position: relative;
+            top: 2px;
+            left: 10px;
+            z-index: 99;
+            }
+            #music >.nct{
+                visibility: hidden;
+                position: absolute;
+            }
+            #music:hover .nct{
+                visibility: visible;
             }
         </style>
     </head>
@@ -104,6 +117,11 @@
             <div id="result">
                <p id="text">Kết Quả : </p>
                <p id="ket_qua" ></p>
+            </div>
+            <div id="music">
+                <img src="./background/icon_nav.png" alt="nghe nhạc">
+                <iframe src="https://www.nhaccuatui.com/mh/auto/HUrRmiQuz1P7" width="620" height="200" frameborder="0" allowfullscreen allow="autoplay" class="nct"></iframe>
+            </div>
         </div>
 <script type="text/javascript">
             function ten_nam(){
