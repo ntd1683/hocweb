@@ -135,12 +135,34 @@
             }
         };
         let array=[];
+        function array_match(n){
+            for(let i=0;i<array.length;i++){
+                if(n==array[i]){
+                    return 0;
+                }
+            }
+            return 1;
+        }
+        function random_match(n){
+            do{
+                n=Math.round(Math.random()*20);
+                if(array_match(n)==1){
+                    return n;
+                }
+            }while(array_match(n)==0);
+        }
         function button_push(){
             let rand;
+            let rand_experiment;
             let s=0;
-            let number=parseInt(document.getElementById('input_number').value);
+                let number=parseInt(document.getElementById('input_number').value);
+                if(number<=0){
+                    alert('Số phần tử phải dương');
+                    document.getElementById('input_number').value='';
+                    return;
+                }
             for(let i=0;i<number;i++){
-                rand=Math.round(Math.random()*20);
+                rand=random_match(rand);
                 array.push(rand);
             }
             let a=array[0];
