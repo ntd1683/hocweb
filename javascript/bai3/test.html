@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="form">
+    <p>Nhập Số : </p>
+        <input id="input_number" type="number">
+        <input type="button" value="Tìm" onclick="button_push_f()" id="click">
+        <input type="button" value="In" onclick="button_output()" id="output">
+    </div>
+    <div id="result">
+    </div>
+    <script>
+        document.getElementById('input_number').onkeydown=function(a){
+            if(a.keyCode==13){
+                button_push_f();
+            }
+        };
+        let array= [];
+            function button_push_f(){
+                let number=parseInt(document.getElementById('input_number').value);
+                array.push(number);
+                document.getElementById('input_number').value='';
+            }
+            function button_output(){
+                let str=' ';
+                for(let i=0;i<array.length;i++){
+                    str+= array[i]+' ';
+                }
+                document.getElementById('result').innerHTML=str;
+            }
+    </script>
+</body>
+</html>
