@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Năm Âm Lịch</title>
+        <meta charset="UTF-8">
+        <style type="text/css">
+            #div_tong{
+                width: 100%;
+                height: 649px;
+                background-image: url(./background/background2.png);
+                font-family: 'Courier New', Courier, monospace;
+            }
+            #form{
+                width: 50%;
+                height: 40%;
+                position: relative;
+                top: 145px;
+                left: 254px;
+            }
+            #tren{
+                width: 100%;
+                height: 30%;
+                background-color: #40cbea;
+                border: 1px solid #40cbea;
+                border-radius: 58px 58px 0px 0px;
+                text-align: center;
+                font-weight: bold;
+                text-decoration: underline;
+            }
+            #duoi{
+                position: relative;
+                width: 100%;
+                height: 70%;
+                background-color: #40cbea;
+                border: 1px solid #40cbea;
+                border-radius: 0px 0px 58px 58px;
+            }
+            #nhap{
+                margin-top: 20px;
+                margin-left: 30px;
+                width: 100%;
+                font-size: 30px;
+            }
+            #numbers{
+                position: absolute;
+                border: 1px solid black;
+                border-radius: 20px;
+                width: 50%;
+                height: 15%;
+                top: 20px;
+                left: 215px;
+                text-align: center;
+            }
+            #button{
+                position: absolute;
+                border: 1px solid white;
+                border-radius: 24px;
+                top: 97px;
+                left: 264px;
+                width: 111px;
+                height: 32px;
+                font-size: 20px;
+            }
+            #result{
+                position: relative;
+                width: 551px;
+                height: 100px;
+                background-color: #9ce8ee;
+                top: 155px;
+                left: 311px;
+                border: 1px;
+                border-radius: 58px;
+            }
+            #text{
+                position: absolute;
+                top:5px;
+                left: 30px;
+                font-size: 30px;
+            }
+            #ket_qua{
+                position: absolute;
+                top:5px;
+                left: 200px;
+                font-size: 30px; 
+            }
+            #music{
+            position: relative;
+            top: -350px;
+            left: 10px;
+            z-index: 99;
+            }
+            #music >.nct{
+                visibility: hidden;
+                position: absolute;
+            }
+            #music:hover .nct{
+                visibility: visible;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="div_tong">
+            <div id="form">
+                <div id="tren">
+                    <p>TÌM TÊN NĂM ÂM LỊCH</p>
+                </div>
+                <div id="duoi">
+                    <form>
+                        <div id="nhap">
+                            Nhập Năm :
+                            <input type="number" id="numbers"> 
+                        </div>
+                        <input type="button" value="Tìm" onclick="ten_nam()" id="button" >
+                    </form>
+                </div>
+            </div>
+            <div id="result">
+               <p id="text">Kết Quả : </p>
+               <p id="ket_qua" ></p>
+            </div>
+            <div id="music">
+                <img src="./background/icon_nav.png" alt="nghe nhạc">
+                <iframe src="https://www.nhaccuatui.com/mh/auto/HUrRmiQuz1P7" width="620" height="120" frameborder="0" allowfullscreen allow="autoplay" class="nct"></iframe>
+            </div>
+        </div>
+<script type="text/javascript">
+            function ten_nam(){
+                let n=parseInt(document.getElementById('numbers').value);
+                let can;
+                let chi;
+                can=(n-3)%10;
+                switch (can){
+                    case 0:
+                        can="Quý";
+                        break;
+                    case 1:
+                        can="Giáp";
+                        break;
+                    case 2:
+                        can="Ất";
+                        break;
+                    case 3:
+                        can="Bính";
+                        break;
+                    case 4:
+                        can="Đinh";
+                        break;
+                    case 5:
+                        can="Mậu";
+                        break;
+                    case 6:
+                        can="Kỷ";
+                        break;
+                    case 7:
+                        can="Canh";
+                        break;
+                    case 8:
+                        can="Tân";
+                        break;
+                    case 9:
+                        can="Nhậm";
+                        break;
+                }
+                chi=(n-3)%12;
+                switch (chi){
+                    case 0:
+                        chi=" Hợi";
+                        break;
+                    case 1:
+                        chi=" Tý";
+                        break;
+                    case 2:
+                        chi=" Sửu";
+                        break;
+                    case 3:
+                        chi=" Dần";
+                        break;
+                    case 4:
+                        chi=" Mão";
+                        break;
+                    case 5:
+                        chi=" Thìn";
+                        break;
+                    case 6:
+                        chi=" Tỵ";
+                        break;
+                    case 7:
+                        chi=" Ngọ";
+                        break;
+                    case 8:
+                        chi=" Mùi";
+                        break;
+                    case 9:
+                        chi=" Thân";	
+                        break;
+                    case 10:
+                        chi=" Dậu";
+                        break;
+                    case 11:
+                        chi=" Tuất";
+                        break;
+                }
+                document.getElementById('ket_qua').innerHTML=`Năm ${n} - ${can}${chi}`;
+            }
+</script>
+    </body>
+</html>
