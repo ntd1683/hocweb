@@ -33,7 +33,8 @@ function button_push(){
                 alert('Mảng chỉ dao động từ 0 đến 20 và không được trùng');
             }
             else if(d==20){
-                alert('Tổng số mảng in ra chỉ bao gồm 20 giá trị');
+                alert('Tổng số mảng in ra chỉ bao gồm 20 giá trị ');
+                alert('Vui lòng reset lại');
             }
             document.getElementById('input_number').value='';
             return;
