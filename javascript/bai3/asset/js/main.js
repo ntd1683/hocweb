@@ -3,6 +3,7 @@ document.getElementById('input_number').onkeydown = function(a){
         button_push();
     }
 };
+let d=0;
 let array=[];
 function array_match(n){
     for(let i=0;i<array.length;i++){
@@ -25,8 +26,15 @@ function button_push(){
     let rand_experiment;
     let s=0;
         let number=parseInt(document.getElementById('input_number').value);
-        if(number<=0||number>=22){
-            alert('Số phần tử phải dương \n Mảng chỉ dao động từ 0 đến 20 và không được trùng');
+        if(number<=0||number>=22||d==20){
+            if(number<=0)
+            alert('Số phần tử phải dương');
+            else if(number>=22){
+                alert('Mảng chỉ dao động từ 0 đến 20 và không được trùng');
+            }
+            else if(d==20){
+                alert('Tổng số mảng in ra chỉ bao gồm 20 giá trị');
+            }
             document.getElementById('input_number').value='';
             return;
         }
@@ -45,6 +53,7 @@ function button_push(){
         }
         s+=array[j];
     }
+	d+=number;
     document.getElementById('result1').innerHTML='Mảng : ' + array;
     document.getElementById('result2').innerHTML= '<br>'+'GTLN (MAX) trong mảng : '+a;
     document.getElementById('result3').innerHTML='<br>'+'GTNN (MIN) trong mảng : '+b;
