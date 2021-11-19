@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html{
+            font-family: 'Courier New', Courier, monospace;
+        }
+        body{
+            width: 100%;
+            height: 665px;
+            background-image: url(./asset/img/2021\ \(54\).jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            backdrop-filter: blur(3px);
+        }
+        #main{
+            width: 100%;
+            height: 645px;
+        }
+        #form{
+            width: 29%;
+            height: 66%;
+            text-align: center;
+            position: relative;
+            left: 36%;
+            top: 19%;
+        }
+        #header{
+            width: 100%;
+            height: 46px;
+            background-color: cadetblue;
+            border-radius: 25px 25px 0px 0px;
+            border-bottom: 5px solid white;
+            line-height: 46px;
+        }
+        #header>h2{
+            text-transform: uppercase;
+        }
+        #about{
+            width: 100%;
+            height: 90%;
+            background-color: cadetblue;
+            border-radius: 0px 0px 25px 25px;
+            position: relative;
+        }
+        #content{
+            position: absolute;
+            left: 16%;
+        }
+        p{
+            font-size: 20px;
+            margin: 5px;
+        }
+        .input-text{
+            border-radius: 25px;
+            border: 2px solid white;
+            width: 100%;
+            height: 25px;
+            font-size: 20px;
+            margin-left: 6px;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        .button-click{
+            border: 2px solid white;
+            border-radius: 25px;
+            width: 40%;
+            height: 35px;
+            margin: 5px;
+        }
+        #output-VN{
+            visibility: hidden;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        #notifi{
+            visibility: hidden;
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <form id="form">
+            <div id="header">
+                <h2>Học thuộc từ</h2>
+            </div>
+            <div id="about">
+                <div id="content">
+                    <p>Từ Cần Dò</p> <input type="text" id="input-Eng" class="input-text">
+                    <p>Tiếng Việt</p> <input type="text" id="input-VN" class="input-text">
+                    <br>
+                    <input type="button" onclick="button()" value="click" class="button-click">
+                    <input type="button" value="In ra" onclick="output()" class="button-click">
+                    <div id="result">
+                        <p>Tiếng Việt : </p>
+                        <div id="output-VN">
+                            Vietnamese
+                        </div>
+                        <p>Nhập Từ Cần Dò : </p>
+                        <input type="text" id="output-Eng" class="input-text" >
+                        <div id="notifi">Thông Báo</div>
+                        <input type="button" value="Check" onclick="check_eng()" class="button-click">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        //khai bao mang
+        let arr_eng=[];
+        let arr_vn=[];
+        let arr=[];
+        // enter ==) submit
+        document.getElementById('input-Eng').onkeydown=function(a){
+           if(a.keyCode==13){
+               button();
+           }
+       };
+        document.getElementById('input-VN').onkeydown=function(b){
+           if(b.keyCode==13){
+               button();
+           }
+       };
+        document.getElementById('output-Eng').onkeydown=function(c){
+           if(c.keyCode==13){
+               check_eng();
+               console.log(2);
+           }
+       };
+       //mảng không trùng
+       function array_match(n){
+           for(let i=0;i<arr_eng.length;i++){
+                if(arr[i]==n){
+                    return 0;
+                }
+           }
+           return 1;
+       }
+       //function
+       //button
+       function button(){
+            let input_eng=document.getElementById('input-Eng').value;
+            let input_vn=document.getElementById('input-VN').value;
+            if(input_eng.length==0||input_vn.length==0){
+                alert('Không Được Để Trống');
+            }
+            else{
+                arr_eng.push(input_eng);
+                document.getElementById('input-Eng').value='';
+                arr_vn.push(input_vn);
+                document.getElementById('input-VN').value='';
+            }
+        }
+        //output
+        var n;
+        function output(){
+            do{
+                n=Math.round(Math.random()*arr_eng.length-1);
+            }while(array_match(n)==0);
+            document.getElementById('output-VN').innerHTML=arr_vn[n];
+            document.getElementById('output-VN').style.visibility="visible";
+        }
+        //check
+        function check_eng(){
+            let output_eng=document.getElementById('output-Eng').value;
+            if(output_eng==arr_eng[n]){
+                document.getElementById('notifi').innerHTML='yes';
+                document.getElementById('notifi').style.visibility="visible";
+            }
+            else{
+                document.getElementById('notifi').innerHTML='no';
+                document.getElementById('notifi').style.visibility="visible";
+            }
+        }
+    </script>
+</body>
+</html>
