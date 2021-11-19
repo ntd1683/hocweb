@@ -3,7 +3,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Học Từ Tiếng Anh</title>
+    <link rel="stylesheet" href="./asset/font/themify-icons/themify-icons.css">
     <style>
         *{
             margin: 0;
@@ -86,6 +87,12 @@
             color: red;
             font-weight: bold;
         }
+        #info{
+            position:absolute;
+            color: red;
+            left: 58px;
+            visibility: hidden;
+        }
     </style>
 </head>
 <body>
@@ -108,6 +115,7 @@
                         </div>
                         <p>Nhập Từ Cần Dò : </p>
                         <input type="text" id="output-Eng" class="input-text" >
+                        <i class="ti-info-alt" id="info"></i>
                         <div id="notifi">Thông Báo</div>
                         <input type="button" value="Check" onclick="check_eng()" class="button-click">
                     </div>
@@ -176,10 +184,12 @@
             if(output_eng==arr_eng[n]){
                 document.getElementById('notifi').innerHTML='yes';
                 document.getElementById('notifi').style.visibility="visible";
+                document.getElementById('info').style.visibility="visible";
             }
             else{
                 document.getElementById('notifi').innerHTML='no';
                 document.getElementById('notifi').style.visibility="visible";
+                document.getElementById('info').style.visibility="visible";
             }
         }
     </script>
