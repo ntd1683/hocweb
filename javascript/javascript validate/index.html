@@ -208,7 +208,7 @@
             </select>
             </div>
             <br>
-            <input type="submit" value="Đăng Kí" id="button" onclick="return push()">
+            <input type="button" value="Đăng Kí" id="button" onclick="return push()">
         </form>
     </div>
     <script type="text/javascript">
@@ -248,6 +248,10 @@
                     document.getElementById('error-name-visible').style.visibility= "visible";
                     check_error=true;
                 }
+                else{
+                    document.getElementById('error-name').innerHTML='';
+                    document.getElementById('error-name-visible').style.visibility= "hidden";
+                }
             }
             //sex
             let input_sex=document.getElementsByName('sex');
@@ -255,6 +259,7 @@
             for(let i=0;i<input_sex.length;i++){
                 if(input_sex[i].checked==true){
                     check_error_sex=true;
+                    document.getElementById('error-sex-visible').style.visibility= "hidden";
                 }
             }
             if(check_error_sex==false){
@@ -276,6 +281,10 @@
                     document.getElementById('error-adress-visible').style.visibility= "visible";
                     check_error=true;
                 }
+                else{
+                    document.getElementById('error-adress').innerHTML='';
+                    document.getElementById('error-adress-visible').style.visibility= "hidden";
+                }
             }
             //email
             let input_email = document.getElementById('input-email').value;
@@ -291,6 +300,10 @@
                     document.getElementById('error-email-visible').style.visibility= "visible";
                     check_error=true;
                 }
+                else{
+                    document.getElementById('error-email').innerHTML='';
+                    document.getElementById('error-email-visible').style.visibility= "hidden";
+                }
             }
             //password
             let input_password = document.getElementById('input-password').value;
@@ -300,11 +313,15 @@
                 check_error=true;
             }
             else{
-                let regex_password=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+                let regex_password=/^(?:\w.){8,}$/;
                 if(regex_password.test(input_password)==false){
                     document.getElementById('error-password').innerHTML=`*Mật khẩu quá yếu `;
                     document.getElementById('error-password-visible').style.visibility= "visible";
                     check_error=true;
+                }
+                else{
+                    document.getElementById('error-password').innerHTML='';
+                    document.getElementById('error-password-visible').style.visibility= "hidden";
                 }
             }
             if(check_error==true){
