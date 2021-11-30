@@ -154,6 +154,14 @@
            }
            return 1;
        }
+       //xoá một vị trí trong mảng
+       function delete_array(a,n){
+        for(let i=n;i<a.length;i++){
+		a[i]=a[i+1];
+	    }
+	    a.length--;
+        return a;
+       }
        //function
        //button
        function button(){
@@ -173,10 +181,11 @@
         var n;
         function output(){
             do{
-                n=Math.round(Math.random()*arr_eng.length-1);
+                n=Math.round(Math.random()*(arr_eng.length-1));
             }while(array_match(n)==0);
             document.getElementById('output-VN').innerHTML=arr_vn[n];
             document.getElementById('output-VN').style.visibility="visible";
+            document.getElementById('output-Eng').value='';
         }
         //check
         function check_eng(){
@@ -185,6 +194,8 @@
                 document.getElementById('notifi').innerHTML='yes';
                 document.getElementById('notifi').style.visibility="visible";
                 document.getElementById('info').style.visibility="visible";
+                delete_array(arr_eng,n);
+                delete_array(arr_vn,n);
             }
             else{
                 document.getElementById('notifi').innerHTML='no';
