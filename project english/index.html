@@ -142,7 +142,6 @@
         document.getElementById('output-Eng').onkeydown=function(c){
            if(c.keyCode==13){
                check_eng();
-               console.log(2);
            }
        };
        //mảng không trùng
@@ -196,6 +195,7 @@
                 document.getElementById('info').style.visibility="visible";
                 delete_array(arr_eng,n);
                 delete_array(arr_vn,n);
+                output();
             }
             else{
                 document.getElementById('notifi').innerHTML='no';
