@@ -35,5 +35,5 @@ echo $error;
 
 // close 
 
-mysqli_close($connect);
+mysqli_close($connect)
 ?>
