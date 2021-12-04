@@ -106,8 +106,8 @@
     #button-submit:hover{
         opacity: 0.9;
     }
-        /* error */
-        .icon-size{
+            /* error */
+            .icon-size{
         font-size: 20px;
     }
     #span-error-email,
@@ -148,6 +148,42 @@
     </style>
 </head>
 <body>
+    <?php
+        $code = $_GET['model'];
+
+        require_once './asset/php/connect.php';
+
+        $sql="select * from info_model where code = $code";
+        $result = mysqli_query($connect,$sql);
+        $info_model = mysqli_fetch_array($result);
+        // sex
+        $sex = $info_model['sex'];
+        if ($sex=='Nam'){
+            $sex_nam='checked';
+            $sex_nu='';
+        }
+        else {
+            $sex_nam='';
+            $sex_nu='checked';
+        }
+        // option
+        $subject = $info_model['subject'];
+        if($subject=='Coi phim'){
+            $subject1='selected';
+            $subject2='';
+            $subject3='';
+        }
+        else if($subject=='Chụp ảnh'){
+            $subject1='';
+            $subject2='selected';
+            $subject3='';
+        }
+        else if($subject=='Xem stream'){
+            $subject1='';
+            $subject2='';
+            $subject3='selected';
+        }
+    ?>
     <div id="main">
         <div id="container">
             <div id="header">
@@ -155,9 +191,10 @@
                 Đăng kí
             </div>
             <div id="body-container">
-                <form method="post" action="process.php"  onsubmit="return false">
+                <form method="post" action="process_update.php" onsubmit="return false">
+                    <input type="hidden" name="code" value="<?php echo $info_model['code']?>">
                     <label for="input_name" class="body-text-header">Tên</label>
-                    <input class="input-text" type="text" name="name" id="input_name">
+                    <input class="input-text" type="text" name="name" id="input_name" value="<?php echo $info_model['name']?>">
                     <span id="span-error-name">
                         <i id="icon-name" class="ti-info-alt icon-size"></i>
                         <div id="error-name" class="error-hidden">Lưu ý khi nhập :
@@ -166,11 +203,11 @@
                     </span>
                     <br>
                     <label for="input_sex" class="body-text-header">Giới Tính</label>
-                    <input type="radio" name="sex" value="Nam" id="input_sex">Nam
-                    <input type="radio" name="sex" value="Nữ" id="input_sex" style="margin-bottom: 20px;">Nữ
+                    <input type="radio" name="sex" value="Nam" id="input_sex" <?php echo $sex_nam?>>Nam
+                    <input type="radio" name="sex" value="Nữ" id="input_sex" style="margin-bottom: 20px;" <?php echo $sex_nu?>>Nữ
                     <br>
                     <label for="input_email" class="body-text-header">Email</label>
-                    <input class="input-text" type="email" name="email" id="input_email">
+                    <input class="input-text" type="email" name="email" id="input_email" value="<?php echo $info_model['email']?>">
                     <span id="span-error-email">
                         <i id="icon-email" class="ti-info-alt icon-size"></i>
                         <div id="error-email" class="error-hidden">Lưu ý khi nhập :
@@ -178,7 +215,7 @@
                     </span>
                     <br>
                     <label for="input_picture" class="body-text-header">Nhập Link Ảnh</label>
-                    <input class="input-text" type="text" name="picture" id="input_picture">
+                    <input class="input-text" type="text" name="picture" id="input_picture" value="<?php echo $info_model['link_picture']?>">
                     <span id="span-error-picture">
                         <i id="icon-picture" class="ti-info-alt icon-size"></i>
                         <div id="error-picture" class="error-hidden">Lưu ý khi nhập :
@@ -186,10 +223,10 @@
                     </span>
                     <br>
                     <label class="body-text-header">Ngày sinh</label>
-                    <input class="input-text" type="date" name="date" >
+                    <input class="input-text" type="date" name="date" value="<?php echo $info_model['date']?>">
                     <br>
                     <label for="input_adress" class="body-text-header">Địa chỉ</label>
-                    <input class="input-text" type="text" name="adress" id="input_adress">
+                    <input class="input-text" type="text" name="adress" id="input_adress" value="<?php echo $info_model['adress'] ?>">
                     <span id="span-error-adress">
                         <i id="icon-adress" class="ti-info-alt icon-size"></i>
                         <div id="error-adress" class="error-hidden">Lưu ý khi nhập :
@@ -198,16 +235,17 @@
                     <br>
                     <label for="input_subject" class="body-text-header">Sở thích</label>
                     <select name="subject" id="input_subject">
-                        <option value="subject1">Coi phim</option>
-                        <option value="subject2">Chụp ảnh</option>
-                        <option value="subject3">Xem stream</option>
+                        <option value="subject1" <?php echo $subject1?>>Coi phim</option>
+                        <option value="subject2" <?php echo $subject2?>>Chụp ảnh</option>
+                        <option value="subject3" <?php echo $subject3?>>Xem stream</option>
                     </select>
                     <br>
-                    <button id="button-submit" onclick="return push_button_submit()">Đăng kí</button>
+                    <button id="button-submit" onclick="return push_button_submit()">Sửa thông tin</button>
                 </form>
             </div>
         </div>
     </div>
+    <?php mysqli_close($connect)?>
     <script>
         document.getElementById('input_name').onkeydown = function (a){
             if (a.keyCode==13){
@@ -234,6 +272,7 @@
             let check_error=false;
             //name
             let input_name=document.getElementById('input_name').value;
+            console.log('input_name');
             if(input_name.length===0){
                 document.getElementById('error-name').innerHTML='*Bắt buộc - không được để trống';
                 document.getElementById('span-error-name').style.color= "red";

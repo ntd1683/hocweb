@@ -164,8 +164,7 @@
             <div id="content">
                 <?php 
                     $code =$_GET['model'];
-                    $connect = mysqli_connect('localhost','root','','j2school');
-                    mysqli_set_charset($connect,'utf8');
+                    require_once './asset/php/connect.php';
                     
                     $sql="select * from info_model
                     where code =$code";

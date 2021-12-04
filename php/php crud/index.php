@@ -26,6 +26,11 @@
             position: relative;
             
         }
+
+        .delete-text-decoration{
+            text-decoration: none;
+        }
+
         /* post */
         #post{
             background : gray;
@@ -112,6 +117,7 @@
 
         /* content */
         #content{
+            position: relative;
             padding: 15px;
             width: 100%;
             background-color: black;
@@ -132,11 +138,70 @@
         #content >.model h1{
             color: white;
         }
-        a{
+
+        .color-text-decoration-a{
             text-decoration-color: white;
         }
+
         #content>.model img{
-            height: 350px;
+            height: 300px;
+        }
+
+        .model .fix-model{
+            display: flex;
+            margin-top: -26px;
+            font-size: 20px;
+            width: fit-content;
+            color: white;
+            border: 2px solid white;
+            padding: 3px;
+            background-color: gray;
+        }
+        
+        .model .delete-model{
+            display: flex;
+            margin-top: -34px;
+            margin-bottom: 25px;
+            margin-left: 6%;
+            font-size: 20px;
+            width: fit-content;
+            color: white;
+            border: 2px solid white;
+            padding: 3px;
+            background-color: gray;
+        }
+
+        .model .fix-model:hover,
+        .model .delete-model:hover{
+            background-color: #009688;
+        }
+
+        #input-search{
+            margin-left: 35%;
+            width: 50%;
+            height: 35px;
+            border-radius: 15px;
+            font-size: 25px;
+            text-align: center;
+            color: #5e5959;
+        }
+        #content .footage-page{
+            font-size: 20px;
+            float: left;
+            margin: 15px;
+            border: 2px solid white;
+            border-radius: 5px;
+            background-color: gray;
+            color: white;
+        }
+        #footage{
+            position: absolute;
+            left: 30%;
+            bottom: 5px;
+        }
+
+        #content .footage-page:hover{
+            background-color: #009688;
         }
     </style>
 </head>
@@ -173,21 +238,62 @@
             </div>
             <div id="content">
                 <?php 
-                    $connect = mysqli_connect('localhost','root','','j2school');
-                    mysqli_set_charset($connect,'utf8');
+                    require_once './asset/php/connect.php';
                     
-                    $sql="select * from info_model";
+                    $search='';
+                    $page=1;
+
+                    if (isset($_GET['page'])){
+                        $page=$_GET['page'];
+                    }
+
+                    $search='';
+                    if (isset($_GET['search'])){
+                        $search=$_GET['search'];
+                    }
+
+                    
+                    // die($page);
+                    $sql_total_model="select count(*) from info_model where name like '%$search%'";
+                    $arr_total_model= mysqli_query($connect,$sql_total_model);
+                    $sql_arr_total_model = mysqli_fetch_array($arr_total_model);
+                    $total_model = $sql_arr_total_model['count(*)'];
+
+                    $model_in_page = 2;
+                    
+                    $total_page=ceil($total_model / $model_in_page);
+                    
+                    $skip_model = ($page-1)*$model_in_page;
+                    
+                    $sql="select * from info_model 
+                    where
+                    name like '%$search%' limit  $model_in_page offset $skip_model";
                     $result = mysqli_query($connect,$sql);
                 ?>
-                
+                <form >
+                    <input type="search" name="search" id="input-search" value="<?php echo $search?>">
+                </form>
                 <?php foreach ($result as $each_post) {?>
                 <div class="model">
-                    <a target="_blank" href="./show.php?model=<?php echo $each_post['code'] ?>">
-                    <h1><?php echo $each_post['name'] ?></h1>
+                    <a target="_blank" href="./show.php?model=<?php echo $each_post['code'] ?>" class="color-text-decoration-a">
+                    <h1><?php echo $each_post['name'] ?></h1> 
+                    <a href="./form_update.php?model=<?php echo $each_post['code'] ?>" target="_blank" class="delete-text-decoration">
+                        <div class="fix-model">Sửa</div>
+                    </a>
+                    <a href="./process_delete.php?model=<?php echo $each_post['code'] ?>" target="_blank" class="delete-text-decoration">
+                        <div class="delete-model">Xoá</div>
+                    </a>
                     <img src="<?php echo $each_post['link_picture']?>" alt="Ảnh Model">
                     </a>
                 </div>
                 <?php } ?>
+                <div id="footage">
+                    <?php for ($i=1;$i<=$total_page;$i++){?>
+                        <a class="a-footage" href="?page=<?php echo $i ?>&search=<?php echo $search?>">
+                            <div class="footage-page"><?php echo $i ?></div>
+                        </a>
+                    <?php }?> 
+                </div>
             </div>
         </div>
     </div>
