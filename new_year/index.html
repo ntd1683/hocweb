@@ -155,10 +155,12 @@
     <script>
     let video = document.getElementById("myVideo");
     let btn = document.getElementById("myBtn");
+    let troll_video = document.getElementById("troll");
     let check = 1;
     function troll(){
         if(check==5){
             video.setAttribute("src","troll.mp4");
+            troll_video.remove();
         }
         switch(check){
             case 1:{

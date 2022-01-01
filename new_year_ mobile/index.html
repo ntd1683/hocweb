@@ -148,16 +148,18 @@
     </button>
     <div class="content">
       <h1>Chúc Mừng Năm Mới</h1>
-      <p>Chúc mọi người năm mới vui vẻ ^^ nếu bạn không thấy nền thay đổi hãy ấn nút dưới <br>Bạn hãy click 5 lần nút trên màn hình bạn sẽ bật ngờ :D</p>
+      <p>Chúc mọi người năm mới vui vẻ ^^ Bạn hãy ấn nút dưới trước nha <br>Bạn hãy click 5 lần nút trên màn hình bạn sẽ bật ngờ :D</p>
       <button id="myBtn" onclick="myFunction()">Pause</button>
     </div>
     <script>
     let video = document.getElementById("myVideo");
     let btn = document.getElementById("myBtn");
+    let troll_video = document.getElementById("troll");
     let check = 1;
     function troll(){
         if(check==5){
             video.setAttribute("src","troll.mp4");
+            troll_video.remove();
         }
         switch(check){
             case 1:{
