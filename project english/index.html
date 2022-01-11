@@ -187,6 +187,11 @@
             document.getElementById('output-VN').innerHTML=arr_vn[n];
             document.getElementById('output-VN').style.visibility="visible";
             document.getElementById('output-Eng').value='';
+            if(arr_vn.length == 0){
+                document.getElementById('output-VN').innerHTML='Hết từ rồi';
+                document.getElementById('output-VN').style.color="red";
+                alert('Hết từ rồi , chúc mừng bạn đã học thuộc hết từ');
+            }
         }
         //check
         function check_eng(){
