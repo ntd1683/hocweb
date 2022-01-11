@@ -191,7 +191,7 @@
         //check
         function check_eng(){
             let output_eng=document.getElementById('output-Eng').value;
-            output_eng.toLowerCase();
+            output_eng = output_eng.toLowerCase();
             if(output_eng==arr_eng[n]){
                 document.getElementById('notifi').innerHTML='yes';
                 document.getElementById('notifi').style.visibility="visible";
