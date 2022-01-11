@@ -128,7 +128,7 @@
         let arr_eng=[];
         let arr_vn=[];
         let arr=[];
-        // enter ==) submit
+        // enter ==> submit
         document.getElementById('input-Eng').onkeydown=function(a){
            if(a.keyCode==13){
                button();
@@ -166,6 +166,8 @@
        function button(){
             let input_eng=document.getElementById('input-Eng').value;
             let input_vn=document.getElementById('input-VN').value;
+            input_eng = input_eng.toLowerCase();
+            input_vn = input_vn.toLowerCase();
             if(input_eng.length==0||input_vn.length==0){
                 alert('Không Được Để Trống');
             }
@@ -189,6 +191,7 @@
         //check
         function check_eng(){
             let output_eng=document.getElementById('output-Eng').value;
+            output_eng.toLowerCase();
             if(output_eng==arr_eng[n]){
                 document.getElementById('notifi').innerHTML='yes';
                 document.getElementById('notifi').style.visibility="visible";
